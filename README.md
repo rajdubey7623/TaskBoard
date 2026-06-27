@@ -1,19 +1,19 @@
-# 📋 TaskFlow - Smart Task Management System
+ 📋 TaskFlow - Smart Task Management System
 
 A modern Full Stack Task Management application built using the **MERN Stack**. TaskFlow helps users organize daily tasks efficiently with secure authentication, task prioritization, due dates, search, filters, and task status management.
 
 ---
 
-## 🚀 Features
+🚀 Features
 
-### 🔐 Authentication
+🔐 Authentication
 - User Registration
 - User Login
 - JWT Authentication
 - Protected Routes
 - Secure Logout
 
-### ✅ Task Management
+ ✅ Task Management
 - Create Tasks
 - Edit Tasks
 - Delete Tasks
@@ -22,7 +22,7 @@ A modern Full Stack Task Management application built using the **MERN Stack**. 
 - Task Priority (High / Medium / Low)
 - Due Date Support
 
-### 📊 Dashboard
+ 📊 Dashboard
 - Total Tasks
 - Pending Tasks
 - Completed Tasks
@@ -31,8 +31,7 @@ A modern Full Stack Task Management application built using the **MERN Stack**. 
 - Filter by Priority
 
 ---
-
-# 📸 Screenshots
+📸 Screenshots
 
 ## Login Page
 
@@ -48,7 +47,7 @@ A modern Full Stack Task Management application built using the **MERN Stack**. 
 
 ## Task Management
 
-![Tasks](./screenshots/dashboard-tasks.png)
+![Tasks](./screenshots/task.png)
 
 ---
 
@@ -59,8 +58,7 @@ A modern Full Stack Task Management application built using the **MERN Stack**. 
 > **Note:** Replace these images with your own screenshots before submitting.
 
 ---
-
-# 🛠 Tech Stack
+ 🛠 Tech Stack
 
 ## Frontend
 - React.js
@@ -87,7 +85,7 @@ A modern Full Stack Task Management application built using the **MERN Stack**. 
 
 ---
 
-# 📁 Project Structure
+📁 Project Structure
 
 ```
 TaskFlow
@@ -112,14 +110,12 @@ TaskFlow
 ```
 
 ---
-
-# ⚙️ Installation & Setup
+⚙️ Installation & Setup
 
 ## 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/taskflow.git
-
+git clone https://github.com/rajdubey7623/TaskBoard
 cd taskflow
 ```
 
@@ -179,7 +175,7 @@ http://localhost:5173
 
 ---
 
-# 🌍 Environment Variables
+🌍 Environment Variables
 
 Create a `.env` file inside **backend**
 
@@ -195,7 +191,7 @@ GEMINI_API_KEY=your_api_key
 
 ---
 
-# 📄 .env.example
+📄 .env.example
 
 ```env
 PORT=
@@ -209,45 +205,9 @@ GEMINI_API_KEY=
 
 ---
 
-# 🤖 AI Integration
 
-## Selected LLM
 
-**Google Gemini API**
-
-### Why Gemini?
-
-- Free API tier for developers
-- Easy integration
-- Fast response time
-- Excellent natural language understanding
-- Well-documented REST API
-
-### Planned AI Feature
-
-The application is designed to integrate **Google Gemini API** to provide intelligent task assistance.
-
-Example:
-
-**User Input**
-
-```
-Finish React Project
-```
-
-**AI Suggested Subtasks**
-
-- Design UI
-- Build Components
-- Connect Backend
-- Test Application
-- Deploy Project
-
-This feature helps users break large tasks into manageable subtasks, improving productivity.
-
----
-
-# 📌 API Endpoints
+ 📌 API Endpoints
 
 ## Authentication
 
@@ -269,7 +229,7 @@ This feature helps users break large tasks into manageable subtasks, improving p
 
 ---
 
-# 🎯 Future Enhancements
+ 🎯 Future Enhancements
 
 - Analytics Dashboard
 - Drag & Drop Task Management
@@ -281,14 +241,19 @@ This feature helps users break large tasks into manageable subtasks, improving p
 
 ---
 
-# 👨‍💻 Author
+ 👨‍💻 Author
+       
+  Raj Kumar Dubey
 
-**Karuna**
 
 Full Stack MERN Developer
 
 ---
 
-# 📜 License
+📜 License
 
 This project is created for educational and assignment purposes.
+## 🌐 Live Demo
+
+- 🔵 Frontend: https://task-board-kdrqpil8f-raj23jids030-3334s-projects.vercel.app  
+- 🟢 Backend: https://taskboard-backend-ayhc.onrender.com
