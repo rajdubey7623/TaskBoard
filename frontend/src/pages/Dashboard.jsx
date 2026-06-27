@@ -241,7 +241,7 @@ const COLORS = [
 // =========================
 
 return (
-  <div className="min-h-screen bg-gray-100">
+<div className="min-h-screen bg-slate-950 text-white">
     {/* Navbar */}
     <nav className="bg-indigo-700 text-white px-8 py-4 flex justify-between items-center shadow-lg">
       <h1 className="text-3xl font-bold">TaskFlow</h1>

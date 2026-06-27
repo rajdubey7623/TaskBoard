@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaLock,
+  FaEye,
+  FaEyeSlash,
+  FaRocket
+} from "react-icons/fa";
 import api from "../services/api";
 
 export default function Login() {
@@ -32,21 +38,22 @@ export default function Login() {
 
       const response = await api.post("/auth/login", formData);
 
-// Save JWT Token
-localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify(response.data.user)
+      );
 
-// Save User (optional but useful)
-localStorage.setItem("user", JSON.stringify(response.data.user));
+      setMessage(response.data.message);
 
-setMessage(response.data.message);
-
-setTimeout(() => {
-  navigate("/dashboard");
-}, 1000);
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1000);
 
     } catch (error) {
       setMessage(
-        error.response?.data?.message || "Something went wrong"
+        error.response?.data?.message ||
+        "Something went wrong"
       );
     } finally {
       setLoading(false);
@@ -54,24 +61,36 @@ setTimeout(() => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-700 via-indigo-700 to-purple-700 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4 relative overflow-hidden">
 
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
+      {/* Background Effects */}
+      <div className="absolute w-96 h-96 bg-cyan-500 rounded-full blur-[150px] opacity-20 top-0 left-0"></div>
+      <div className="absolute w-96 h-96 bg-purple-600 rounded-full blur-[150px] opacity-20 bottom-0 right-0"></div>
 
-        <h1 className="text-4xl font-bold text-center text-blue-700">
-          TaskFlow
+      <div className="w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-8 relative z-10">
+
+        {/* Logo */}
+        <div className="flex justify-center mb-5">
+          <div className="bg-gradient-to-r from-cyan-500 to-purple-600 p-4 rounded-2xl shadow-lg">
+            <FaRocket className="text-3xl text-white" />
+          </div>
+        </div>
+
+        {/* Heading */}
+        <h1 className="text-4xl font-extrabold text-center bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+          FocusBoard
         </h1>
 
-        <p className="text-center text-gray-500 mt-2 mb-6">
-          Welcome back! Login to continue.
+        <p className="text-center text-gray-300 mt-3 mb-8">
+          Welcome back! Sign in to continue your journey.
         </p>
 
         {message && (
           <div
-            className={`mb-4 p-3 rounded-lg text-center font-medium ${
+            className={`mb-5 p-3 rounded-xl text-center font-medium ${
               message.toLowerCase().includes("successful")
-                ? "bg-green-100 text-green-700 border border-green-300"
-                : "bg-red-100 text-red-700 border border-red-300"
+                ? "bg-green-500/20 text-green-300 border border-green-500/30"
+                : "bg-red-500/20 text-red-300 border border-red-500/30"
             }`}
           >
             {message}
@@ -80,67 +99,82 @@ setTimeout(() => {
 
         <form onSubmit={handleSubmit} className="space-y-5">
 
+          {/* Email */}
           <div>
-            <label className="block mb-2 font-medium">Email</label>
+            <label className="block mb-2 text-gray-300">
+              Email Address
+            </label>
 
-            <div className="flex items-center border rounded-lg px-3">
-              <FaEnvelope className="text-gray-400" />
+            <div className="flex items-center bg-slate-800 border border-slate-700 rounded-xl px-4">
+              <FaEnvelope className="text-cyan-400" />
 
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Enter email"
-                className="w-full p-3 outline-none"
+                placeholder="Enter your email"
+                className="w-full p-4 bg-transparent text-white outline-none placeholder-gray-500"
                 required
               />
             </div>
           </div>
 
+          {/* Password */}
           <div>
-            <label className="block mb-2 font-medium">Password</label>
+            <label className="block mb-2 text-gray-300">
+              Password
+            </label>
 
-            <div className="flex items-center border rounded-lg px-3">
-              <FaLock className="text-gray-400" />
+            <div className="flex items-center bg-slate-800 border border-slate-700 rounded-xl px-4">
+              <FaLock className="text-purple-400" />
 
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Enter password"
-                className="w-full p-3 outline-none"
+                placeholder="Enter your password"
+                className="w-full p-4 bg-transparent text-white outline-none placeholder-gray-500"
                 required
               />
 
               <button
                 type="button"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() =>
+                  setShowPassword(!showPassword)
+                }
+                className="text-gray-400 hover:text-white transition"
               >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                {showPassword
+                  ? <FaEyeSlash />
+                  : <FaEye />}
               </button>
             </div>
           </div>
 
+          {/* Button */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
+            className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-105 transition-all duration-300 text-white font-bold py-4 rounded-xl shadow-lg"
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading
+              ? "Signing In..."
+              : "Login to FocusBoard"}
           </button>
 
         </form>
 
-        <p className="text-center mt-6">
+        {/* Register */}
+        <p className="text-center text-gray-400 mt-8">
           Don't have an account?
 
           <Link
             to="/register"
-            className="text-blue-600 font-semibold ml-2"
+            className="text-cyan-400 font-semibold ml-2 hover:text-cyan-300"
           >
-            Register
+            Create Account
           </Link>
         </p>
 
