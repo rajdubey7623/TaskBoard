@@ -51,11 +51,9 @@ A modern Full Stack Task Management application built using the **MERN Stack**. 
 
 ---
 
-## Mobile View
 
-![Mobile](./screenshots/mobile.png)
 
-> **Note:** Replace these images with your own screenshots before submitting.
+
 
 ---
  🛠 Tech Stack
